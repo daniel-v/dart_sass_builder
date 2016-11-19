@@ -1,4 +1,4 @@
-Before going into details, please read how [build is different](/dart-lang/build) from transformers.
+Before going into details, please read how [build is different](https://github.com/dart-lang/build/) from transformers.
  
 ## Setting up your project
 
