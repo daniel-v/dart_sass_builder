@@ -1,0 +1,4 @@
+name: p1
+dependencies:
+  sass_builder:
+    path: ../../
