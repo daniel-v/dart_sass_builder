@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/daniel-v/dart_sass_builder.svg?branch=master)](https://travis-ci.org/daniel-v/dart_sass_builder)
+
 Simple [SASS](http://sass-lang.com/) builder of [Dart](https://dartlang.org)
 
 ## Motivation
