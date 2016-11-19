@@ -8,3 +8,8 @@ Simple [SASS](http://sass-lang.com/) builder of [Dart](https://dartlang.org)
 ## How to use it
  
 Please see the [example](example) folder.
+
+
+### Running tests
+
+`pub get && pub run test`
