@@ -1,0 +1,4 @@
+name: sass_builder_example
+dev_dependencies:
+  sass_builder:
+    path: ../
