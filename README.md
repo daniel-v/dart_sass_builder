@@ -7,4 +7,4 @@ Simple [SASS](http://sass-lang.com/) builder of [Dart](https://dartlang.org)
   
 ## How to use it
  
-Please see the [example](https://github.com/daniel-v/dart_sass_builder/example) folder.
+Please see the [example](example) folder.
