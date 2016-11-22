@@ -1,3 +1,7 @@
+## v0.0.3
+
+* downgrade of `package:build` dependency requirement for Angular 2 compatibility
+
 ## v0.0.2
 
 * travis integration
