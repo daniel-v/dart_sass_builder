@@ -29,3 +29,4 @@ pubspec.lock
 .idea
 .dart_tool
 example/**/*.css
+.sass-cache
