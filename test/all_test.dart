@@ -54,7 +54,7 @@ main() async {
           .resolve('res/sass_mock.dart')
           .toFilePath(windows: Platform.isWindows);
       compilationStrategy = new BinaryCompilationStrategy(Platform.executable)
-        ..arguments = [executablePath, ''];
+        ..arguments = [executablePath];
     });
 
     test('can use binary compilation', () async {

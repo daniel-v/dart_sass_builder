@@ -1,3 +1,7 @@
+## v0.1.1
+
+* fixed #3
+
 ## v0.1.0
 
 * Binary compilation strategy added [compilation_strategies](lib/src/compilation_strategies.dart)

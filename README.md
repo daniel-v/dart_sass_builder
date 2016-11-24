@@ -2,6 +2,8 @@
 
 Simple [SASS](http://sass-lang.com/) builder of [Dart](https://dartlang.org)
 
+Following `semver`
+
 ## Motivation
 
 * SASS is [ported to Dart](http://blog.sass-lang.com/posts/1022316-announcing-dart-sass) 
