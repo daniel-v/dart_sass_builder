@@ -6,20 +6,37 @@ import 'package:sass/src/ast/sass.dart';
 import 'package:sass/src/visitor/perform.dart';
 import 'package:sass/src/visitor/serialize.dart';
 
-String _renderScss(String contents, {Uri url, bool color: false}) {
-  var sassTree = new Stylesheet.parseScss(contents, url: url, color: color);
-  var cssTree = evaluate(sassTree, color: color);
-  return toCss(cssTree);
+AssetId _toCompiledSassAsset(AssetId inputId) => inputId.changeExtension('.css');
+
+abstract class CompilationStrategy {
+  Future<Asset> compile(Asset asset);
+}
+
+class DartSassCompilationStrategy implements CompilationStrategy {
+
+  @override
+  Future<Asset> compile(Asset asset) async {
+    String outputCss = _renderScss(asset.stringContents, url: p.toUri(asset.id.path), color: false);
+    return new Asset(_toCompiledSassAsset(asset.id), outputCss);
+  }
+
+  static String _renderScss(String contents, {Uri url, bool color: false}) {
+    var sassTree = new Stylesheet.parseScss(contents, url: url, color: color);
+    var cssTree = evaluate(sassTree, color: color);
+    return toCss(cssTree);
+  }
 }
 
 class SassBuilder extends Builder {
 
+  final CompilationStrategy _compilationStrat;
+
+  SassBuilder([CompilationStrategy compilationStrategy])
+      : _compilationStrat = compilationStrategy ?? new DartSassCompilationStrategy();
+
   @override
   Future build(BuildStep buildStep) async {
-    var input = buildStep.input;
-    var url = p.toUri(input.id.path);
-    var css = _renderScss(input.stringContents, url: url);
-    var cssAsset = new Asset(_toCompiledSassAsset(input.id), css);
+    var cssAsset = await _compilationStrat.compile(buildStep.input);
     await buildStep.writeAsString(cssAsset);
   }
 
@@ -27,8 +44,6 @@ class SassBuilder extends Builder {
   List<AssetId> declareOutputs(AssetId inputId) {
     return [_toCompiledSassAsset(inputId)];
   }
-
-  static AssetId _toCompiledSassAsset(AssetId inputId) => inputId.changeExtension('.css');
 
   static void addPhases(PhaseGroup group, PackageGraph graph, List<String> globs) {
     group.newPhase().addAction(new SassBuilder(), new InputSet(graph.root.name, globs));

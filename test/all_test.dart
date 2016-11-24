@@ -32,7 +32,7 @@ main() {
       var primaryInput = makeAsset('a|somefile.scss', 'body{ background-color: black; }');
       var reader = new StubAssetReader();
       var writer = new StubAssetWriter();
-      var builder = new SassBuilder();
+      var builder = new SassBuilder(new DartSassCompilationStrategy());
       var buildStep = new BuildStepImpl(primaryInput, builder.declareOutputs(primaryInput.id),
           reader, writer, primaryInput.id.package, const Resolvers());
       await builder.build(buildStep);
