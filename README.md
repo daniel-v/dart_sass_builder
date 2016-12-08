@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/daniel-v/dart_sass_builder.svg?branch=master)](https://travis-ci.org/daniel-v/dart_sass_builder)
+[![Build status](https://ci.appveyor.com/api/projects/status/eounnqvbsy1gf83h?svg=true)](https://ci.appveyor.com/project/daniel-v/dart-sass-builder)
+
 
 Simple [SASS](http://sass-lang.com/) builder of [Dart](https://dartlang.org)
 

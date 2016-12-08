@@ -1,0 +1,12 @@
+install:
+  - choco install -y dart-sdk
+  - set PATH=%PATH%;C:\tools\dart-sdk\bin
+  - set PATH=%PATH%;%APPDATA%\Pub\Cache\bin
+  - pub get
+
+clone_depth: 1
+
+build: off
+
+test_script:
+  - pub run test
