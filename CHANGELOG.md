@@ -1,3 +1,8 @@
+## v0.2.0
+
+* builder is configurable via `sass_builder.yaml` ( #5 )
+* executable `sass-builder` added ( #4 )
+
 ## v0.1.1
 
 * fixed #3

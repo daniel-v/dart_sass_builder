@@ -1,7 +1,6 @@
 @TestOn("vm")
 import 'dart:io';
 
-import 'dart:isolate';
 import 'dart:mirrors';
 
 import 'package:test/test.dart';
@@ -9,7 +8,6 @@ import 'package:build/build.dart';
 import 'package:build/src/builder/build_step_impl.dart';
 import 'package:build_test/build_test.dart';
 import 'package:sass_builder/sass_builder.dart';
-import 'package:path/path.dart' as p;
 
 const String sass_contents = ' ';
 

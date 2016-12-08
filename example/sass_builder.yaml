@@ -1,0 +1,5 @@
+sass:
+  builder: dart
+  arguments:
+files:
+- web/*.scss
