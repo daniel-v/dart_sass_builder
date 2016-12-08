@@ -7,4 +7,9 @@ dependencies:
     git: https://github.com/sass/dart-sass.git
 dev_dependencies:
   test:
+  scheduled_test:
   build_test:
+  mockito:
+
+executables:
+  sass-builder: sass_builder

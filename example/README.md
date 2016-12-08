@@ -33,3 +33,10 @@ pub run tool/build.dart && pub serve
 
 You can now open your browser at `http://localhost:8080/`
 
+Alternatively you can activate it as a global package 
+
+```bash
+pub global activate sass_builder --source git https://github.com/daniel-v/dart_sass_builder.git
+```
+
+and run `sass-builder` in the folder where your pubspec.yaml and `sass_builder.yaml` files are.
