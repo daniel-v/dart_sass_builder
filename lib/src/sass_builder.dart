@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:build/build.dart';
+import 'package:build_runner/build_runner.dart';
 import 'compilation_strategies.dart';
 import 'util.dart';
 
@@ -13,8 +14,9 @@ class SassBuilder extends Builder {
 
   @override
   Future build(BuildStep buildStep) async {
-    var cssAsset = await compilationStrategy.compile(buildStep.input);
-    buildStep.writeAsString(cssAsset);
+    String scss = await buildStep.readAsString(buildStep.inputId);
+    String css = await compilationStrategy.compile(buildStep.inputId, scss);
+    buildStep.writeAsString(toCompiledSassAsset(buildStep.inputId), css);
   }
 
   @override
