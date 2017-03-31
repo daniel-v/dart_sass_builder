@@ -2,8 +2,7 @@ name: sass_builder
 version: 0.3.0+1
 description: Simple build wrapper around the new dart-sass package
 dependencies:
-  build: '0.7.2'
-  build_runner: '0.3.0+1'
+  build: '0.5.0'
   package_resolver: 1.0.2
   sass:
     git: https://github.com/sass/dart-sass.git

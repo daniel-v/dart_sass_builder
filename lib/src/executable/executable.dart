@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'builder_config.dart';
-import 'package:build_runner/build_runner.dart';
+import 'package:build/build.dart';
 import 'package:yaml/yaml.dart' as yaml;
 import 'package:path/path.dart' as p;
 

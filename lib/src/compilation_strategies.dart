@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:async';
 
 import 'package:build/build.dart';
@@ -16,13 +15,12 @@ class DartSassCompilationStrategy implements CompilationStrategy {
 
   @override
   Future<String> compile(AssetId fromAsset, String scss) async {
-    String outputCss = _renderScss(scss, url: p.toUri(fromAsset.path), color: false);
+    String outputCss = await  _renderScss(scss, url: p.toUri(fromAsset.path), color: false);
     return outputCss;
   }
 
   static Future<String> _renderScss(String contents, {Uri url, bool color: false}) async {
     var sassTree = new Stylesheet.parseScss(contents, url: url, color: color);
-    print(p.toUri(p.join(p.current, '.packages')));
     var syncPackageResolver = await (await PackageResolver
         .loadConfig(p.toUri(p.join(p.current, '.packages')))).asSync;
     var cssTree = evaluate(sassTree, color: color, packageResolver: syncPackageResolver);

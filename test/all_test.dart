@@ -1,12 +1,9 @@
 @TestOn("vm")
-import 'dart:io';
 
 import 'dart:mirrors';
 
-import 'package:build_barback/build_barback.dart';
 import 'package:test/test.dart';
 import 'package:build/build.dart';
-import 'package:build_runner/build_runner.dart';
 import 'package:build/src/builder/build_step_impl.dart';
 import 'package:build_test/build_test.dart';
 import 'package:sass_builder/sass_builder.dart';
@@ -35,24 +32,21 @@ main() async {
     });
 
     test('runs compiler on asset', () async {
-      var primaryInput = makeAssetId('a|somefile.scss');
+      var primaryInput = makeAsset('a|somefile.scss', 'body{ a{ color: green; } }');
       var writer = new InMemoryAssetWriter();
-      addAssets({
-        primaryInput: 'body{ a{ color: green; } }'
-      }, writer);
-
+      addAssets([primaryInput], writer);
       var reader = new InMemoryAssetReader(writer.assets);
 
       var builder = new SassBuilder(new DartSassCompilationStrategy());
-      var outputs = builder.declareOutputs(primaryInput);
+      var outputs = builder.declareOutputs(primaryInput.id);
       var outputId = outputs.first;
       var buildStep = new BuildStepImpl(primaryInput, outputs,
-          reader, writer, primaryInput.package, const BarbackResolvers());
+          reader, writer, primaryInput.id.package, const Resolvers());
       await builder.build(buildStep);
       await buildStep.complete();
 
       expect(outputId.extension, '.css');
-      expect(writer.assets[outputId].stringValue, '''body a {
+      expect(writer.assets[outputId].value, '''body a {
   color: green;
 }'''.trim());
     });
