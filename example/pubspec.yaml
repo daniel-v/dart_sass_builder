@@ -1,4 +1,6 @@
 name: sass_builder_example
+dependencies:
+  build_runner: '0.3.0+1'
 dev_dependencies:
   sass_builder:
     path: ../

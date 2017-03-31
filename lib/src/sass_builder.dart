@@ -13,8 +13,10 @@ class SassBuilder extends Builder {
 
   @override
   Future build(BuildStep buildStep) async {
-    var cssAsset = await compilationStrategy.compile(buildStep.input);
-    buildStep.writeAsString(cssAsset);
+    String scss = await buildStep.readAsString(buildStep.input.id);
+    String css = await compilationStrategy.compile(buildStep.input.id, scss);
+    Asset output = new Asset(toCompiledSassAsset(buildStep.input.id), css);
+    buildStep.writeAsString(output);
   }
 
   @override

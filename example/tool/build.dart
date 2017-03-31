@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:build/build.dart';
+import 'package:build_runner/build_runner.dart';
 import 'package:sass_builder/sass_builder.dart';
 
 Future main() async {
